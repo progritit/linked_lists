@@ -175,6 +175,27 @@ class LinkedList {
   lastNewNode.nextNode = previous.nextNode;
   previous.nextNode = firstNewNode;
   }
+
+  removeAt(index) {
+  const listSize = this.size();
+
+  if (index < 0 || index >= listSize) {
+    throw new RangeError("Index out of bounds");
+  }
+
+  if (index === 0) {
+    this.headNode = this.headNode.nextNode;
+    return;
+  }
+
+  let previous = this.headNode;
+
+  for (let i = 0; i < index - 1; i += 1) {
+    previous = previous.nextNode;
+  }
+
+  previous.nextNode = previous.nextNode.nextNode;
+  }
 }
 
 export { LinkedList, Node };

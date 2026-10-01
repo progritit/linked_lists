@@ -343,3 +343,64 @@ test("throws RangeError when the index is greater than the list size", () => {
 
   expect(() => list.insertAt(3, "parrot")).toThrow(RangeError);
 });
+
+describe("removeAt", () => {
+  test("removes the node at the given index", () => {
+    const list = new LinkedList();
+
+    list.append("dog");
+    list.append("cat");
+    list.append("parrot");
+
+    list.removeAt(1);
+
+    expect(list.toString()).toBe(
+      "( dog ) -> ( parrot ) -> null",
+    );
+  });
+
+  test("removes the first node", () => {
+    const list = new LinkedList();
+
+    list.append("dog");
+    list.append("cat");
+    list.append("parrot");
+
+    list.removeAt(0);
+
+    expect(list.toString()).toBe(
+      "( cat ) -> ( parrot ) -> null",
+    );
+  });
+
+  test("removes the final node", () => {
+    const list = new LinkedList();
+
+    list.append("dog");
+    list.append("cat");
+    list.append("parrot");
+
+    list.removeAt(2);
+
+    expect(list.toString()).toBe(
+      "( dog ) -> ( cat ) -> null",
+    );
+  });
+
+  test("throws RangeError when index is below 0", () => {
+    const list = new LinkedList();
+
+    list.append("dog");
+
+    expect(() => list.removeAt(-1)).toThrow(RangeError);
+  });
+
+  test("throws RangeError when index is greater than or equal to the list size", () => {
+    const list = new LinkedList();
+
+    list.append("dog");
+    list.append("cat");
+
+    expect(() => list.removeAt(2)).toThrow(RangeError);
+  });
+});
