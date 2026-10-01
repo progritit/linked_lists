@@ -23,7 +23,14 @@
     "type": "git",
     "url": "git+https://github.com/progritit/linked_lists.git"
   },
-  "keywords": [],
+  "keywords": [
+    "javascript",
+    "linked-list",
+    "data-structures",
+    "algorithms",
+    "jest",
+    "the-odin-project"
+  ],
   "bugs": {
     "url": "https://github.com/progritit/linked_lists/issues"
   },
