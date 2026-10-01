@@ -140,6 +140,41 @@ class LinkedList {
 
   return `${result}null`;
   }
+
+  insertAt(index, ...values) {
+  const listSize = this.size();
+
+  if (index < 0 || index > listSize) {
+    throw new RangeError("Index out of bounds");
+  }
+
+  if (values.length === 0) {
+    return;
+  }
+
+  const firstNewNode = new Node(values[0]);
+  let lastNewNode = firstNewNode;
+
+  for (let i = 1; i < values.length; i += 1) {
+    lastNewNode.nextNode = new Node(values[i]);
+    lastNewNode = lastNewNode.nextNode;
+  }
+
+  if (index === 0) {
+    lastNewNode.nextNode = this.headNode;
+    this.headNode = firstNewNode;
+    return;
+  }
+
+  let previous = this.headNode;
+
+  for (let i = 0; i < index - 1; i += 1) {
+    previous = previous.nextNode;
+  }
+
+  lastNewNode.nextNode = previous.nextNode;
+  previous.nextNode = firstNewNode;
+  }
 }
 
 export { LinkedList, Node };

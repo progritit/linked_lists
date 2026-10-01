@@ -263,3 +263,83 @@ describe("toString", () => {
     expect(list.toString()).toBe("( dog ) -> null");
   });
 });
+
+describe("insertAt", () => {
+  test("inserts a value at the given index", () => {
+    const list = new LinkedList();
+
+    list.append(1);
+    list.append(2);
+    list.append(3);
+
+    list.insertAt(1, 10);
+
+    expect(list.toString()).toBe(
+      "( 1 ) -> ( 10 ) -> ( 2 ) -> ( 3 ) -> null",
+    );
+  });
+});
+
+test("inserts multiple values while preserving their order", () => {
+  const list = new LinkedList();
+
+  list.append(1);
+  list.append(2);
+  list.append(3);
+
+  list.insertAt(1, 10, 11);
+
+  expect(list.toString()).toBe(
+    "( 1 ) -> ( 10 ) -> ( 11 ) -> ( 2 ) -> ( 3 ) -> null",
+  );
+});
+
+test("inserts values at the beginning of the list", () => {
+  const list = new LinkedList();
+
+  list.append(1);
+  list.append(2);
+
+  list.insertAt(0, 10, 11);
+
+  expect(list.toString()).toBe(
+    "( 10 ) -> ( 11 ) -> ( 1 ) -> ( 2 ) -> null",
+  );
+});
+
+test("inserts values at the end of the list", () => {
+  const list = new LinkedList();
+
+  list.append(1);
+  list.append(2);
+  list.append(3);
+
+  list.insertAt(3, 4, 5);
+
+  expect(list.toString()).toBe(
+    "( 1 ) -> ( 2 ) -> ( 3 ) -> ( 4 ) -> ( 5 ) -> null",
+  );
+});
+
+test("inserts into an empty list at index 0", () => {
+  const list = new LinkedList();
+
+  list.insertAt(0, "dog");
+
+  expect(list.toString()).toBe("( dog ) -> null");
+});
+
+test("throws RangeError when the index is below 0", () => {
+  const list = new LinkedList();
+
+  expect(() => list.insertAt(-1, "dog")).toThrow(RangeError);
+});
+
+test("throws RangeError when the index is greater than the list size", () => {
+  const list = new LinkedList();
+
+  list.append("dog");
+  list.append("cat");
+
+  expect(() => list.insertAt(3, "parrot")).toThrow(RangeError);
+});
