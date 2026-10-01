@@ -124,6 +124,22 @@ class LinkedList {
 
   return -1;
   }
+
+  toString() {
+  if (this.headNode === null) {
+    return "";
+  }
+
+  let result = "";
+  let current = this.headNode;
+
+  while (current !== null) {
+    result += `( ${current.value} ) -> `;
+    current = current.nextNode;
+  }
+
+  return `${result}null`;
+  }
 }
 
 export { LinkedList, Node };

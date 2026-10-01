@@ -236,3 +236,30 @@ describe("findIndex", () => {
   });
 });
 
+describe("toString", () => {
+  test("returns an empty string for an empty list", () => {
+    const list = new LinkedList();
+
+    expect(list.toString()).toBe("");
+  });
+
+  test("returns the list as a formatted string", () => {
+    const list = new LinkedList();
+
+    list.append("dog");
+    list.append("cat");
+    list.append("parrot");
+
+    expect(list.toString()).toBe(
+      "( dog ) -> ( cat ) -> ( parrot ) -> null",
+    );
+  });
+
+  test("works with a single node", () => {
+    const list = new LinkedList();
+
+    list.append("dog");
+
+    expect(list.toString()).toBe("( dog ) -> null");
+  });
+});
