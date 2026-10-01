@@ -145,3 +145,94 @@ describe("at", () => {
     expect(list.at(-1)).toBeUndefined();
   });
 });
+
+describe("pop", () => {
+  test("returns undefined when the list is empty", () => {
+    const list = new LinkedList();
+
+    expect(list.pop()).toBeUndefined();
+  });
+
+  test("removes and returns the only node in the list", () => {
+    const list = new LinkedList();
+
+    list.append("dog");
+
+    expect(list.pop()).toBe("dog");
+    expect(list.head()).toBeUndefined();
+    expect(list.size()).toBe(0);
+  });
+
+  test("removes the head node and returns its value", () => {
+    const list = new LinkedList();
+
+    list.append("dog");
+    list.append("cat");
+    list.append("parrot");
+
+    expect(list.pop()).toBe("dog");
+    expect(list.head()).toBe("cat");
+    expect(list.size()).toBe(2);
+  });
+});
+
+describe("contains", () => {
+  test("returns true when the value exists in the list", () => {
+    const list = new LinkedList();
+
+    list.append("dog");
+    list.append("cat");
+    list.append("parrot");
+
+    expect(list.contains("cat")).toBe(true);
+  });
+
+  test("returns false when the value does not exist", () => {
+    const list = new LinkedList();
+
+    list.append("dog");
+    list.append("cat");
+
+    expect(list.contains("snake")).toBe(false);
+  });
+
+  test("returns false for an empty list", () => {
+    const list = new LinkedList();
+
+    expect(list.contains("dog")).toBe(false);
+  });
+});
+
+describe("findIndex", () => {
+  test("returns the index of the matching value", () => {
+    const list = new LinkedList();
+
+    list.append("dog");
+    list.append("cat");
+    list.append("parrot");
+
+    expect(list.findIndex("dog")).toBe(0);
+    expect(list.findIndex("cat")).toBe(1);
+    expect(list.findIndex("parrot")).toBe(2);
+  });
+
+  test("returns -1 when the value is not found", () => {
+    const list = new LinkedList();
+
+    list.append("dog");
+    list.append("cat");
+
+    expect(list.findIndex("snake")).toBe(-1);
+  });
+
+  test("returns the index of the first matching value", () => {
+    const list = new LinkedList();
+
+    list.append("dog");
+    list.append("cat");
+    list.append("dog");
+
+    expect(list.findIndex("dog")).toBe(0);
+  });
+});
+

@@ -82,6 +82,48 @@ class LinkedList {
 
   return undefined;
   }
+
+  pop() {
+  if (this.headNode === null) {
+    return undefined;
+  }
+
+  const removedValue = this.headNode.value;
+
+  this.headNode = this.headNode.nextNode;
+
+  return removedValue;
+  }
+
+  contains(value) {
+  let current = this.headNode;
+
+  while (current !== null) {
+    if (current.value === value) {
+      return true;
+    }
+
+    current = current.nextNode;
+  }
+
+  return false;
+  }
+
+  findIndex(value) {
+  let current = this.headNode;
+  let index = 0;
+
+  while (current !== null) {
+    if (current.value === value) {
+      return index;
+    }
+
+    current = current.nextNode;
+    index += 1;
+  }
+
+  return -1;
+  }
 }
 
 export { LinkedList, Node };
