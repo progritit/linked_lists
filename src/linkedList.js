@@ -44,6 +44,44 @@ class LinkedList {
 
   return count;
   }
+
+  head() {
+  return this.headNode?.value;
+  }
+
+  tail() {
+  if (this.headNode === null) {
+    return undefined;
+  }
+
+  let current = this.headNode;
+
+  while (current.nextNode !== null) {
+    current = current.nextNode;
+  }
+
+  return current.value;
+  }
+
+  at(index) {
+  if (index < 0) {
+    return undefined;
+  }
+
+  let current = this.headNode;
+  let currentIndex = 0;
+
+  while (current !== null) {
+    if (currentIndex === index) {
+      return current.value;
+    }
+
+    current = current.nextNode;
+    currentIndex += 1;
+  }
+
+  return undefined;
+  }
 }
 
 export { LinkedList, Node };
