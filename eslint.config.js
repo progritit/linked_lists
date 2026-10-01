@@ -38,4 +38,14 @@ export default defineConfig([
       globals: globals.node,
     },
   },
+
+  {
+  files: ["tests/**/*.js"],
+  languageOptions: {
+    ecmaVersion: "latest",
+    sourceType: "module",
+    globals: globals.jest,
+    },
+  },
+
 ]);
