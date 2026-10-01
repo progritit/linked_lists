@@ -1,7 +1,7 @@
 {
-  "name": "template-vanilla-webpack-quality-starter",
+  "name": "linked-lists",
   "version": "1.0.0",
-  "description": "",
+  "description": "Singly linked list implementation in JavaScript with automated tests.",
   "type": "module",
   "private": true,
   "scripts": {
@@ -21,13 +21,13 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/progritit/template-vanilla-webpack-quality-starter.git"
+    "url": "git+https://github.com/progritit/linked_lists.git"
   },
   "keywords": [],
   "bugs": {
-    "url": "https://github.com/progritit/template-vanilla-webpack-quality-starter/issues"
+    "url": "https://github.com/progritit/linked_lists/issues"
   },
-  "homepage": "https://github.com/progritit/template-vanilla-webpack-quality-starter#readme",
+  "homepage": "https://github.com/progritit/linked_lists#readme",
   "devDependencies": {
     "@babel/core": "^7.29.7",
     "@babel/preset-env": "^7.29.7",
